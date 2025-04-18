@@ -1,0 +1,28 @@
+name: Cloud Build
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual or programmatic triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Use GitHub-hosted runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3 # Fetches repository code
+    
+# Comment following debug lines     
+  #    - name: Verify Current Directory
+   #     run: pwd
+
+    #  - name: List Files
+   #     run: ls -al
+
+    #  - name: Verify .NET Installation
+   #     run: dotnet --info
+
+      - name: Execute CI Pipeline Logic
+        run: dotnet run --project ./CIProgram/CIProgram.csproj
