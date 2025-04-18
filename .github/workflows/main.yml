@@ -23,6 +23,14 @@ jobs:
 
     #  - name: Verify .NET Installation
    #     run: dotnet --info
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'  # Use your preferred Python version
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Execute CI Pipeline Logic
-        run: dotnet run --project ./CIProgram/CIProgram.csproj
+        run: python ci_pipeline.py  # Replace with your Python script filename
